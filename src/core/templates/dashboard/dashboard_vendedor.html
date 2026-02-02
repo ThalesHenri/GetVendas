@@ -32,7 +32,7 @@ Meu Dashboard
 {% endblock %}
 
 {% block dashboard_actions %}
-<a href="#" class="btn-primary">
+<a href="{% url 'pedidos' %}" class="btn-primary">
     + Novo Pedido
 </a>
 {% endblock %}
@@ -45,21 +45,57 @@ Meu Dashboard
             <th>Status</th>
             <th>Cliente</th>
             <th>Total</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
         {% for pedido in ultimos_pedidos %}
         <tr>
             <td>{{ pedido.id }}</td>
-            <td>{{ pedido.status }}</td>
+
+            <td>
+                <span class="status status-{{ pedido.status|lower }}">
+                    {{ pedido.status }}
+                </span>
+            </td>
+
             <td>{{ pedido.cliente }}</td>
             <td>R$ {{ pedido.total }}</td>
+
+            <td style="display:flex; gap:0.5rem;">
+                {% if pedido.status == 'RASCUNHO' %}
+                    <a
+                        href="{% url 'pedido_itens' pedido_id=pedido.id %}"
+                        class="btn-primary"
+                        style="width: 50%;"
+                    >
+                        Continuar
+                    </a>
+                {% else %}
+                    <a
+                        href="{% url 'pedido_itens' pedido_id=pedido.id %}"
+                        class="btn-secondary"
+                    >
+                        Visualizar
+                    </a>
+                {% endif %}
+
+                <a
+                    href="{% url 'pedido_pdf' pedido_id=pedido.id %}"
+                    class="btn-outline"
+                    target="_blank"
+                >
+                    PDF
+                </a>
+            </td>
         </tr>
         {% empty %}
         <tr>
-            <td colspan="4">Nenhum pedido encontrado</td>
+            <td colspan="5">Nenhum pedido encontrado</td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
+
 {% endblock %}

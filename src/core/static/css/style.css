@@ -225,6 +225,26 @@ footer {
     cursor: pointer;
     transition: 0.2s;
 }
+.btn-secondary {
+    background: #1f2937;
+    color: #e5e7eb;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background: #374151;
+}
+
+.btn-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #9ca3af;
+    text-decoration: none;
+}
+
 
 .btn-primary:hover {
     opacity: 0.9;
@@ -317,4 +337,159 @@ footer {
 .btn-primary:hover {
     filter: brightness(1.1);
     transform: translateY(-1px);
+}
+/*Pedidos*/
+.pedido-container {
+    max-width: 720px;
+    margin: 3rem auto;
+    background: #020617;
+    border-radius: 14px;
+    padding: 2rem;
+    border: 1px solid #1e293b;
+}
+
+.pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.pedido-header h2 {
+    margin: 0;
+}
+
+.pedido-subtitle {
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.pedido-body label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #94a3b8;
+}
+
+.pedido-body select {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 1.5rem;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    color: #e5e7eb;
+    border-radius: 8px;
+}
+
+
+/* STATUS */
+.status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+/* Rascunho */
+.status-rascunho {
+    background: rgba(148, 163, 184, 0.15);
+    color: #94a3b8;
+    border: 1px solid #334155;
+}
+
+/* Enviado */
+.status-enviado {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid #2563eb;
+}
+
+/* Faturado */
+.status-faturado {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border: 1px solid #16a34a;
+}
+
+/* CLIENTE FORM */
+.cliente-form {
+    max-width: 720px;
+    margin: 3rem auto;
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 2rem;
+}
+
+.cliente-form-header {
+    margin-bottom: 2rem;
+}
+
+.cliente-form-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.cliente-form-header p {
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+/* CAMPOS */
+.cliente-form .form-group {
+    margin-bottom: 1.4rem;
+}
+
+.cliente-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+.cliente-form input {
+    width: 100%;
+    padding: 0.7rem;
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    color: #e5e7eb;
+}
+
+.cliente-form input:focus {
+    outline: none;
+    border-color: #38bdf8;
+}
+
+/* AÇÕES */
+.cliente-form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.cliente-form-actions .btn-primary {
+    flex: 1;
+}
+
+.cliente-form-actions .btn-secondary {
+    flex: 1;
+    text-align: center;
+}
+
+.btn-outline {
+    border: 1px solid #38bdf8;
+    color: #38bdf8;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn-outline:hover {
+    background: #38bdf8;
+    color: #020617;
 }

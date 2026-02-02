@@ -1,0 +1,72 @@
+{% extends "pedidos/base_pedido.html" %}
+
+{% block pedido_title %}
+Itens do Pedido #{{ pedido.id }}
+{% endblock %}
+
+{% block pedido_subtitle %}
+Status: {{ pedido.get_status_display }}
+{% endblock %}
+
+{% block pedido_content %}
+<div class="pedido-body">
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label>Produto</label>
+            <select name="produto" required>
+                <option value="">Selecione</option>
+                {% for produto in produtos %}
+                    <option value="{{ produto.id }}">
+                        {{ produto.nome }} — R$ {{ produto.preco }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Quantidade</label>
+            <input type="number" name="quantidade" value="1" min="1">
+        </div>
+
+        <button class="btn-primary">
+            Adicionar Item
+        </button>
+    </form>
+    <a href="{% url 'dashboard' %}" class="btn-link">
+        Voltar
+    </a>
+
+    <hr style="margin:2rem 0; border-color:#1e293b;">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Qtd</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in pedido.itens.all %}
+                <tr>
+                    <td>{{ item.produto.nome }}</td>
+                    <td>{{ item.quantidade }}</td>
+                    <td>R$ {{ item.subtotal }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">Nenhum item adicionado</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div style="margin-top:1.5rem; text-align:right;">
+        <strong>Total: R$ {{ pedido.total }}</strong>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "pedidos/base_pedido.html" %}
+
+{% block pedido_title %}
+Novo Pedido
+{% endblock %}
+
+{% block pedido_subtitle %}
+Criação de pedido em rascunho
+{% endblock %}
+
+{% block pedido_content %}
+<form method="post">
+    {% csrf_token %}
+
+    <label>Cliente</label>
+
+    <div style="display:flex; gap:0.75rem; align-items:center;">
+        <select name="cliente" required style="flex:1;">
+            <option value="">Selecione um cliente</option>
+            {% for cliente in clientes %}
+                <option value="{{ cliente.id }}">
+                    {{ cliente.nome }}
+                </option>
+            {% endfor %}
+        </select>
+
+        <!-- 🔥 Botão novo cliente -->
+        <a href="{% url 'novo_cliente' %}" class="btn-secondary">
+            + Novo Cliente
+        </a>
+    </div>
+
+    <button type="submit" class="btn-primary" style="margin-top:1rem;">
+        Criar Pedido
+    </button>
+</form>
+
+<a href="{% url 'dashboard' %}" class="btn-link">
+    Voltar
+</a>
+
+{% for message in messages %}
+    <p style="color:#f87171; margin-bottom:1rem;">
+        {{ message }}
+    </p>
+{% endfor %}
+{% endblock %}

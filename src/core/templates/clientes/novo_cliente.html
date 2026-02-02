@@ -1,0 +1,58 @@
+{% extends "clientes/base_cliente.html" %}
+
+{% block cliente_title %}
+Novo Cliente
+{% endblock %}
+
+{% block cliente_subtitle %}
+Cadastro de cliente vinculado ao vendedor
+{% endblock %}
+
+{% block cliente_content %}
+<form method="post" class="cliente-form">
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label>Nome</label>
+        <input type="text" name="nome" required>
+    </div>
+
+    <div class="form-group">
+        <label>Documento</label>
+        <input type="text" name="documento" placeholder="CPF ou CNPJ">
+    </div>
+
+    <div class="form-group">
+        <label>Telefone</label>
+        <input type="text" name="telefone" required>
+    </div>
+
+    <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" name="email">
+    </div>
+
+    <div class="form-group">
+        <label>Endereço</label>
+        <input type="text" name="endereco" required>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-primary">
+            Salvar Cliente
+        </button>
+
+        <a href="{% url 'pedidos' %}">
+            <button type="button" class="btn-secondary">
+                Voltar
+            </button>
+        </a>
+    </div>
+</form>
+
+{% for message in messages %}
+    <p class="form-error">
+        {{ message }}
+    </p>
+{% endfor %}
+{% endblock %}

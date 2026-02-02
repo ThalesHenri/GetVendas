@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="pedido-container">
+
+    <header class="pedido-header">
+        <div>
+            <h2>{% block pedido_title %}{% endblock %}</h2>
+            <span class="pedido-subtitle">
+                {% block pedido_subtitle %}{% endblock %}
+            </span>
+        </div>
+
+        <div class="pedido-actions">
+            {% block pedido_actions %}{% endblock %}
+        </div>
+    </header>
+
+    <section class="pedido-body">
+        {% block pedido_content %}{% endblock %}
+    </section>
+
+</div>
+{% endblock %}

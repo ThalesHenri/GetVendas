@@ -7,7 +7,7 @@ class PedidoItem(models.Model):
         )
     produto = models.ForeignKey(
         'Produto', 
-        on_delete=models.CASCADE
+        on_delete=models.PROTECT
         )
     quantidade = models.PositiveIntegerField()
     preco_unitario = models.DecimalField(
@@ -15,5 +15,10 @@ class PedidoItem(models.Model):
         decimal_places=2
         )
     criado_em = models.DateTimeField(auto_now_add=True)
+    
+    @property
     def subtotal(self):
-        return self.quantidade + self.preco_unitario
+        return self.quantidade * self.preco_unitario
+    
+    def __str__(self):
+        return super().__str__()
