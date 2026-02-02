@@ -17,8 +17,8 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         ARGS: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
         SOURCE: "./"
-        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        TARGET: "/home/ubuntu"
+        REMOTE_HOST: "ec2-3-231-252-126.compute-1.amazonaws.com"
+        REMOTE_USER: "ubuntu"
+        TARGET: "/home/ubuntu/"
         #EXCLUDE: "/venv/,/.git/"
         #
