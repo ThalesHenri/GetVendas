@@ -15,7 +15,7 @@ jobs:
       uses: easingthemes/ssh-deploy@main
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        ARGS: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+        #ARGS: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
         SOURCE: "./"
         REMOTE_HOST: "ec2-3-231-252-126.compute-1.amazonaws.com"
         REMOTE_USER: "ubuntu"
