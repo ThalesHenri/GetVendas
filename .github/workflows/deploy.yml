@@ -1,9 +1,9 @@
-name: Push-to-ec2
+name: Deploy Django to EC2
 
 on:
   push:
     branches:
-      - main
+      - Master
 
 jobs:
   deploy:
@@ -13,7 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Deploy to EC2
+    - name: Upload files to EC2
       uses: easingthemes/ssh-deploy@main
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -21,3 +21,18 @@ jobs:
         REMOTE_HOST: "ec2-3-231-252-126.compute-1.amazonaws.com"
         REMOTE_USER: "ubuntu"
         TARGET: "/home/ubuntu/"
+
+    - name: Run commands on EC2
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ec2-3-231-252-126.compute-1.amazonaws.com
+        username: ubuntu
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          cd /home/ubuntu/
+          source venv/bin/activate
+          pip install -r requirements.txt
+          cd src/
+          python3 manage.py makemigrations
+          python3 manage.py migrate
+          nohup python3 manage.py runserver 0.0.0.0:8000 &
