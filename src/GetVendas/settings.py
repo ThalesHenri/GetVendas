@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["test.foodzip.com.br", "3.231.252.126"]
 
-
+# teste deploy
 # Application definition
 
 INSTALLED_APPS = [
