@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-gao8ioqrr_t230eqek8u4nsh4&&(+kr#mo^4-*lxy4tk3-s7-w
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["test.foodzip.com.br", "3.231.252.126"]
 
 
 # Application definition
