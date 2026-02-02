@@ -1,0 +1,65 @@
+{% extends "dashboard/base_dashboard.html" %}
+
+{% block dashboard_title %}
+Meu Dashboard
+{% endblock %}
+
+{% block cards %}
+<div class="card">
+    <span>Total de pedidos</span>
+    <strong>{{ total_pedidos }}</strong>
+</div>
+
+<div class="card">
+    <span>Rascunhos</span>
+    <strong>{{ rascunhos }}</strong>
+</div>
+
+<div class="card">
+    <span>Enviados</span>
+    <strong>{{ enviados }}</strong>
+</div>
+
+<div class="card">
+    <span>Faturados</span>
+    <strong>{{ faturados }}</strong>
+</div>
+
+<div class="card highlight">
+    <span>Total faturado</span>
+    <strong>R$ {{ total_faturado }}</strong>
+</div>
+{% endblock %}
+
+{% block dashboard_actions %}
+<a href="#" class="btn-primary">
+    + Novo Pedido
+</a>
+{% endblock %}
+
+{% block pedidos %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Status</th>
+            <th>Cliente</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pedido in ultimos_pedidos %}
+        <tr>
+            <td>{{ pedido.id }}</td>
+            <td>{{ pedido.status }}</td>
+            <td>{{ pedido.cliente }}</td>
+            <td>R$ {{ pedido.total }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Nenhum pedido encontrado</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

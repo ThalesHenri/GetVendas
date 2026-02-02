@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Criar Conta | GetVendas{% endblock %}
+
+{% block content %}
+<section class="auth-container">
+    <div class="auth-card">
+        <h2>Criar conta</h2>
+        <p>Comece a usar o GetVendas agora</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color:#f87171; margin-bottom:1rem;">
+                    {{ message }}
+                </p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label>Usuário</label>
+                <input type="text" name="username" required>
+            </div>
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" name="nome" required>
+            </div>
+
+            <div class="form-group">
+                <label>Telefone</label>
+                <input type="text" name="telefone">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="email">
+            </div>
+
+            <div class="form-group">
+                <label>Documento(Opcional)</label>
+                <input type="text" name="documento">
+            </div>
+            <div class="form-group">
+                <label>Endereço(Opcional)</label>
+                <input type="text" name="endereco">
+            </div>
+
+            <div class="form-group">
+                <label>Senha</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label>Confirmar senha</label>
+                <input type="password" name="password_confirm" required>
+            </div>
+
+            <button type="submit" class="btn-primary">Criar conta</button>
+        </form>
+
+        <p style="margin-top:1.5rem; text-align:center;">
+            Já tem conta?
+            <a href="{% url 'login' %}" style="color:var(--primary);">
+                Fazer login
+            </a>
+        </p>
+    </div>
+</section>
+{% endblock %}

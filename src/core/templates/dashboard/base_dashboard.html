@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard-container">
+
+    <header class="dashboard-header">
+        <div>
+            <h2>{% block dashboard_title %}{% endblock %}</h2>
+            <span class="user-info">
+                Olá, {{ request.user.username }}
+            </span>
+        </div>
+
+        <div class="dashboard-actions">
+            {% block dashboard_actions %}{% endblock %}
+        </div>
+    </header>
+
+    <section class="dashboard-cards">
+        {% block cards %}{% endblock %}
+    </section>
+
+    <section class="dashboard-list">
+        <h3>Últimos pedidos</h3>
+        {% block pedidos %}{% endblock %}
+    </section>
+
+</div>
+{% endblock %}
