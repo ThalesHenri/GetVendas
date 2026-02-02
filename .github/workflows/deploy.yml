@@ -1,12 +1,15 @@
 name: Push-to-ec2
+
 on:
   push:
     branches:
-      - Master
+      - main
+
 jobs:
   deploy:
     name: Deploy to EC2
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout the files
       uses: actions/checkout@v3
@@ -15,10 +18,9 @@ jobs:
       uses: easingthemes/ssh-deploy@main
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        #ARGS: -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
         SOURCE: "./"
         REMOTE_HOST: "ec2-3-231-252-126.compute-1.amazonaws.com"
         REMOTE_USER: "ubuntu"
         TARGET: "/home/ubuntu/"
-        #EXCLUDE: "/venv/,/.git/"
-        #
+        EXCLUDE: "/venv/,/.git/"
+        SSH_OPTIONS: "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
